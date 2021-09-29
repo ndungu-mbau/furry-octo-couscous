@@ -50,6 +50,8 @@ export class AuthService{
     const customer = await users.findOne({ phone });
     const mechanic = await mechanics.findOne({ phone })
 
+    log({ mechanic, customer })
+
     const user = customer || mechanic
     log(user);
   
@@ -110,12 +112,12 @@ export class AuthService{
   async signupMechanic({ name, email, phone, password, area, id_image, id_number, profile_image }: CreateMechanicDto): Promise<CreateUserReturn>{
     await connection.connect();
 
-    const users = connection.db().collection("users");
+    const mechanics = connection.db().collection("mechanics");
   
-    const user_id = uuid();
+    const mechanic_id = uuid();
   
-    await users.insertOne({
-      id: user_id,
+    await mechanics.insertOne({
+      id: mechanic_id,
       name,
       area, 
       id_image,
@@ -127,13 +129,13 @@ export class AuthService{
     });
   
     const token: String = this.generateToken({
-      id: user_id,
+      id: mechanic_id,
       name,
       email,
       phone,
     })
   
-    return { ok: true, id: user_id, token }
+    return { ok: true, id: mechanic_id, token }
   }
 }
 

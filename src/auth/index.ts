@@ -22,8 +22,8 @@ const signupUsers = async (req, res) => {
 };
 
 const loginMechanics = async (req, res) => {
-  const { phone, password }: LoginUserDto = req.body;  
-  const loginDetails: LoginUserReturn = await authService.login({ phone, password })
+  const { phone, password }: LoginMechanicDto = req.body;  
+  const loginDetails: LoginMechanicReturn = await authService.login({ phone, password })
 
   res.json(loginDetails)
 };
@@ -31,7 +31,7 @@ const loginMechanics = async (req, res) => {
 const signupMechanics = async (req, res) => {
 
   const { name, id_number, email, phone, password, area, id_image, profile_image }: CreateMechanicDto = req.body;
-  const userDetails: CreateUserReturn = await authService.signupMechanic({ name, id_number, email, phone, password, area, id_image, profile_image })
+  const userDetails: CreateMechanicReturn= await authService.signupMechanic({ name, id_number, email, phone, password, area, id_image, profile_image })
 
   return res.json(userDetails);
 };
