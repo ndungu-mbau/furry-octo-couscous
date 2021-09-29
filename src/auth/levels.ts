@@ -1,0 +1,45 @@
+export enum AuthLevels{
+  //Basic action roles
+  TRANSACTION_READ = 2,
+  TRANSACTION_CREATE = 4,
+  TRANSACTION_DELETE = 8,
+
+  //agent roles
+  DEPOSIT_READ = 16,
+  DEPOSIT_CREATE = 32,
+  DEPOSIT_DELETE = 64,
+  WITHDRAWAL_READ = 128,
+  WITHDRAWAL_CREATE = 256,
+  WITHDRAWAL_DELETE = 1024,
+
+  //admin roles
+  ACCOUNT_CREATE = 2048,
+  ACCOUNT_READ = 4096,
+  ACCOUNT_UPDATE = 8192,
+  ACCOUNT_DELETE = 16384,
+  AGENT_CREATE = 32768,
+  AGENT_READ = 65536,
+  AGENT_UPDATE = 131072,
+  AGENT_DELETE = 262144,
+  ADMIN_CREATE = 524288,
+  ADMIN_READ = 1048576,
+  ADMIN_UPDATE = 2097152,
+  ADMIN_DELETE = 4194304,
+
+  //superuser roles
+  SUPERUSER = 2**31
+}
+
+export enum AccountTypes {
+  STANDARD = "STANDARD",
+  AGENT = "AGENT",
+  ADMIN = "ADMIN",
+  SUPERUSER = "SUPERUSER"
+}
+
+export const AccountRoles = {
+  [AccountTypes.STANDARD]: 414,
+  [AccountTypes.AGENT]: 176,
+  [AccountTypes.ADMIN]: 2096346,
+  [AccountTypes.SUPERUSER]: AuthLevels.SUPERUSER
+}
