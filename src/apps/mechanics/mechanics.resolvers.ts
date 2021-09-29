@@ -13,10 +13,5 @@ export const MechanicsResolvers = {
       const mechanic : Mechanic = await mechanicService.mechanicById(args.id)
       return mechanic
     },
-    me: async (root, args, ctx) => {
-      const mechanicService: MechanicsService = ctx.injector.get(MechanicsService)
-      const mechanic : Mechanic = await mechanicService.mechanicById(ctx.mechanic.id)
-      return mechanic
-    },
   },
 }

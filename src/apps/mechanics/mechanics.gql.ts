@@ -1,16 +1,19 @@
 import { gql } from 'graphql-modules';
 
 export const MechanicTypes = gql`
-  type Query {
-      users: [User],
-      user(id: String!): User,
-      me: User
+  extend type Query {
+      mechanics: [Mechanic],
+      mechanic(id: String!): Mechanic,
   }
   
-  type User {
-    id: String
-    name: String
+  type Mechanic {
+    id: String,
+    name: String,
+    id_number: String
     phone: String
     email: String
+    area: String,
+    id_image: String,
+    profile_image: String
   }
 `;
