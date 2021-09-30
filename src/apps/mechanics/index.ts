@@ -1,4 +1,4 @@
-import{ MechanicTypes } from './mechanics.gql';
+import{ MechanicTypes } from './mechanics.types';
 import { MechanicsResolvers } from './mechanics.resolvers';
 import { createModule } from 'graphql-modules';
 

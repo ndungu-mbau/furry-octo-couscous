@@ -1,5 +1,5 @@
 import { MechanicsService } from "./mechanics.service"
-import { Mechanic } from "./mechanics.types"
+import { Mechanic } from "../../types"
 
 export const MechanicsResolvers = {
   Query: {

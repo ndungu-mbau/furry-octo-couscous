@@ -1,12 +1,15 @@
 require("dotenv").config();
 require("reflect-metadata");
 import express from "express";
+import cors from "cors"
 import { graphqlHTTP } from "express-graphql";
 import application, { schema } from "../apps";
 import { router as authRouter, tokenMiddleware } from "../auth";
 
 const execute = application.createExecution();
 const server: express.Application = express();
+
+server.use(cors())
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));

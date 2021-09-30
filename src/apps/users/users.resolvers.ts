@@ -1,5 +1,5 @@
 import { UsersService } from "./users.service"
-import { User } from "./users.types"
+import { User } from "../../types"
 
 import { log } from "../../utils/logger"
 

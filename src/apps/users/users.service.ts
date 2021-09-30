@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 
 import { DatabaseConnection  } from "../../utils/keys";
 
-import { User } from "./users.types";
+import { User } from "../../types";
 
 @Injectable()
 export class UsersService{

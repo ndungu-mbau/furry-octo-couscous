@@ -4,7 +4,7 @@ import uuid from "uuid-v4"
 
 import { DatabaseConnection  } from "../../utils/keys";
 
-import { Mechanic } from "./mechanics.types";
+import { Mechanic } from "../../types";
 
 @Injectable()
 export class MechanicsService{

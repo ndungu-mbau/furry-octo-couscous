@@ -1,4 +1,4 @@
-import{ UserTypes } from './users.gql';
+import{ UserTypes } from './users.types';
 import { UsersResolvers } from './users.resolvers';
 import { createModule } from 'graphql-modules';
 

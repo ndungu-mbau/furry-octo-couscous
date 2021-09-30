@@ -2,13 +2,19 @@ import { Router } from "express";
 import { authService } from "./auth.service";
 
 import { log } from "../utils/logger"
-import { CreateUserDto, CreateUserReturn, LoginUserDto, LoginUserReturn } from "../apps/users/users.types";
-import { CreateMechanicDto, CreateMechanicReturn, LoginMechanicDto, LoginMechanicReturn } from "../apps/mechanics/mechanics.types";
+import {
+  CreateUserDto,
+  CreateMechanicDto,
+  CreateReturn,
+  LoginDto,
+  LoginReturn,
+  CreateError,
+} from "../types";
 const router: Router = Router();
 
 const loginUsers = async (req, res) => {
-  const { phone, password }: LoginUserDto = req.body;  
-  const loginDetails: LoginUserReturn = await authService.login({ phone, password })
+  const { phone, password }: LoginDto = req.body;  
+  const loginDetails: LoginReturn = await authService.login({ phone, password })
 
   res.json(loginDetails)
 };
@@ -16,14 +22,14 @@ const loginUsers = async (req, res) => {
 const signupUsers = async (req, res) => {
 
   const { name, email, phone, password, location, residence }: CreateUserDto = req.body;
-  const userDetails: CreateUserReturn = await authService.signupUser({ name, location, residence, email, phone, password })
+  const userDetails: CreateReturn | CreateError = await authService.signupUser({ name, location, residence, email, phone, password })
 
   return res.json(userDetails);
 };
 
 const loginMechanics = async (req, res) => {
-  const { phone, password }: LoginMechanicDto = req.body;  
-  const loginDetails: LoginMechanicReturn = await authService.login({ phone, password })
+  const { phone, password }: LoginDto = req.body;  
+  const loginDetails: LoginReturn = await authService.login({ phone, password })
 
   res.json(loginDetails)
 };
@@ -31,7 +37,7 @@ const loginMechanics = async (req, res) => {
 const signupMechanics = async (req, res) => {
 
   const { name, id_number, email, phone, password, area, id_image, profile_image }: CreateMechanicDto = req.body;
-  const userDetails: CreateMechanicReturn= await authService.signupMechanic({ name, id_number, email, phone, password, area, id_image, profile_image })
+  const userDetails: CreateReturn| CreateError = await authService.signupMechanic({ name, id_number, email, phone, password, area, id_image, profile_image })
 
   return res.json(userDetails);
 };
